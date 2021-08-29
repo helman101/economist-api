@@ -4,7 +4,7 @@ class ColumnsController < ApplicationController
 
     @data = set_columns_data(@columns);
     
-    json_response(@data)
+    json_response({ columns: @data})
   end
 
   private
