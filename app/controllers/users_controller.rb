@@ -1,22 +1,14 @@
 class UsersController < ApplicationController
 
   def create
-    @user = User.create(user_params)
-    if @user.save
-      json_response(@user, :created)
-    else
-      json_response({ errors: @user.errors.full_messages })
-    end
+    @user = User.create!(user_params)
+    json_response(@user, :created)
   end
 
   def auth
     user = get_user(user_params)
-    if user
-      if user.authenticate(params[:password])
-        json_response({ id: user.id, name: user.name, email: user.email })
-      else json_response({ errors: user.errors.full_messages })
-      end
-    else json_response({ errors: user.errors.full_messages })
+    if user && user.authenticate(params[:password]) 
+      json_response({ id: user.id, name: user.name, email: user.email })
     end
   end
 
