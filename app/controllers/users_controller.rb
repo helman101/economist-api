@@ -7,8 +7,12 @@ class UsersController < ApplicationController
 
   def auth
     user = get_user(user_params)
-    if user && user.authenticate(params[:password]) 
-      json_response({ id: user.id, name: user.name, email: user.email })
+    if user
+      if user.authenticate(params[:password])
+        json_response({ id: user.id, name: user.name, email: user.email })
+      else json_response({ error: [ 'Wrong password' ]  })
+      end
+    else json_response({ errors: ['This user does not exist'] })
     end
   end
 
