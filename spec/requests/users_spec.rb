@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :request do
+RSpec.describe 'Users', type: :request do
   let!(:users) { create_list(:user, 5) }
   let(:user_id) { User.first.id }
 
@@ -38,7 +38,7 @@ RSpec.describe "Users", type: :request do
   describe 'Get /auth' do
     let(:user_email) { users.first.email }
     let(:user_password) { users.first.password }
-    before { get "/auth", params: { email: user_email, password: user_password } }
+    before { get '/auth', params: { email: user_email, password: user_password } }
 
     context 'when the user exist' do
       it 'returns the user' do
