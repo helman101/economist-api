@@ -4,16 +4,16 @@ class ColumnsController < ApplicationController
 
     @data = columns_data(@columns)
 
-    json_response({ columns: @data })
+    json_response(@data)
   end
 
   private
 
   def columns_data(columns)
-    cols = {}
+    cols = []
 
     columns.each do |elem|
-      cols[elem.id.to_s] = { articles: Article.where(['column_id = ?', elem.id]).order(:priority) }
+      cols.push({ articles: Article.select('title, description, url, img_url').where(['column_id = ?', elem.id]).order(:priority).as_json })
     end
 
     cols
