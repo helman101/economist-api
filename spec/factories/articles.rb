@@ -5,6 +5,6 @@ FactoryBot.define do
     url { Faker::Internet.unique.url }
     column_id { nil }
     priority { Faker::Number.within(range: 1..7) }
-    description { Faker::Quote.unique }
+    description { Faker::Quote.yoda }
   end
 end
