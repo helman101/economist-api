@@ -7,7 +7,7 @@ class ArticleSpider < Kimurai::Base
     crawl!
   end
 
-  def parse(response, _url:, _data: {})
+  def parse(response, url:, data: {})
     column_list = response.css('div.eprz4kh0') + response.css('div.e1wpk8si0')
     column_priority = 1
 
