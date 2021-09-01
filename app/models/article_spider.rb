@@ -7,6 +7,7 @@ class ArticleSpider < Kimurai::Base
     crawl!
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity, Lint/UnusedMethodArgument
   def parse(response, url:, data: {})
     column_list = response.css('div.eprz4kh0') + response.css('div.e1wpk8si0')
     column_priority = 1
@@ -31,4 +32,5 @@ class ArticleSpider < Kimurai::Base
       column_priority += 1 unless column.css('div.e1yv2jhn0').blank?
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity, Lint/UnusedMethodArgument
 end
