@@ -1,2 +1,2 @@
-release: bin/rails db:migrate
+release: bin/rails db:create
 worker: bundle exec sidekiq
