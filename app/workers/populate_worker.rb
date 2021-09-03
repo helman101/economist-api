@@ -1,7 +1,7 @@
 class PopulateWorker
   include Sidekiq::Worker
 
-  def perform(*args)
+  def perform()
     Article.delete_all
     Column.delete_all
 
