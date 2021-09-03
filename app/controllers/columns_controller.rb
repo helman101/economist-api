@@ -14,7 +14,7 @@ class ColumnsController < ApplicationController
 
     columns.each do |elem|
       cols.push({ id: elem.id,
-                  articles: Article.select('id, title, description, url, img_url')
+                  articles: Article.select('id, title, description, url, img_url, priority')
                     .where(['column_id = ?', elem.id]).order(:priority).as_json })
     end
 
