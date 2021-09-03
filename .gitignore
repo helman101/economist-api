@@ -27,3 +27,5 @@
 /config/master.key
 
 node_modules/
+
+Gemfile.lock
